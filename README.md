@@ -1,6 +1,6 @@
-# Minecraft Server on AWS ECS Fargate usign Terraform
+# Minecraft Server on AWS ECS Fargate using Terraform
 
-![Minecraft Server on AWS ECS Fargate usign Terraform](./img/MinecraftArchitecture.png)
+![Minecraft Server on AWS ECS Fargate using Terraform](./img/MinecraftArchitecture.png)
 
 Host your own Minecraft Server on AWS ECS Fargate using Terraform
 
