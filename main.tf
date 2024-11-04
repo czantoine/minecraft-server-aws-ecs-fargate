@@ -46,7 +46,7 @@ resource "aws_ecs_task_definition" "minecraft_server" {
   container_definitions = jsonencode([
     {
       name          = "minecraft-server"
-      image         = "itzg/minecraft-server:java17-alpine"
+      image         = "itzg/minecraft-server"
       essential     = true
       tty           = true
       stdin_open    = true
@@ -65,7 +65,7 @@ resource "aws_ecs_task_definition" "minecraft_server" {
         },
         {
           "name": "VERSION",
-          "value": "1.19.3"
+          "value": "1.21.3"
         }
       ]
       mountPoints   = [
@@ -74,6 +74,14 @@ resource "aws_ecs_task_definition" "minecraft_server" {
           sourceVolume  = "minecraft-data"
         }
       ]
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = "/ecs/minecraft-server"
+          awslogs-region        = "eu-north-1"
+          awslogs-stream-prefix = "ecs"
+        }
+      }
     }
   ])
   volume {
@@ -113,4 +121,14 @@ resource "aws_iam_role" "ecs_tasks_execution_role" {
 resource "aws_iam_role_policy_attachment" "ecs_tasks_execution_role" {
   role       = "${aws_iam_role.ecs_tasks_execution_role.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_task_log_execution_policy" {
+  role       = "${aws_iam_role.ecs_tasks_execution_role.name}"
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
+}
+
+resource "aws_cloudwatch_log_group" "minecraft_log_group" {
+  name              = "/ecs/minecraft-server"
+  retention_in_days = 14
 }
