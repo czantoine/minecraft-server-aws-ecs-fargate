@@ -87,7 +87,7 @@ This repository provides a comprehensive guide on how to customize the Minecraft
 
 ## Note
 
-The Minecraft server version specified in the Terraform `main.tf` is 1.19.3. This version may become outdated over time, and you may need to update the version to the latest release. You can do this by modifying the `VERSION` environment variable in the `aws_ecs_task_definition` resource.
+The Minecraft server version specified in the Terraform `main.tf` is 1.21.3. This version may become outdated over time, and you may need to update the version to the latest release. You can do this by modifying the `VERSION` environment variable in the `aws_ecs_task_definition` resource.
 
 [DOWNLOAD THE MINECRAFT: JAVA EDITION SERVER](https://www.minecraft.net/en-us/download/server)
 
