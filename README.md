@@ -9,6 +9,10 @@
 
 ![Minecraft Server on AWS ECS Fargate using Terraform](./img/MinecraftArchitecture.png)
 
+If you enjoy my projects and want to support my work, consider buying me a coffee! ☕️
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V22V693)
+
 Host your own Minecraft Server on AWS ECS Fargate using Terraform
 
 This Terraform main deploys a Minecraft server on AWS ECS using the Fargate launch type. The Minecraft server is deployed in a VPC with public subnets and a security group that allows incoming traffic on port 25565. The ECS task definition specifies the resources to be used by the Minecraft server, including CPU, memory, and the Docker image to run. The ECS service manages the deployment and scaling of the Minecraft server tasks.
